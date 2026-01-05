@@ -9,14 +9,11 @@ def add_javascript_to_pdf(input_pdf, output_pdf, javascript_code):
         reader = PyPDF2.PdfReader(file)
         writer = PyPDF2.PdfWriter()
         
-        # Копируем все страницы
         for page in reader.pages:
             writer.add_page(page)
         
-        # Добавляем JavaScript в качестве открытого действия
         writer.add_js(javascript_code)
         
-        # Сохраняем результат
         with open(output_pdf, 'wb') as output_file:
             writer.write(output_file)
 
